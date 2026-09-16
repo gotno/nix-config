@@ -20,7 +20,6 @@
     # You can add overlays here
     overlays = [
       # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -45,6 +44,12 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    plugins = [
+      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+    ];
+  };
   };
   # home.packages = with pkgs; [ steam ];
 
