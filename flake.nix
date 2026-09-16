@@ -9,6 +9,8 @@
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs = {

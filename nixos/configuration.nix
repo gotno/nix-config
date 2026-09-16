@@ -30,6 +30,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      inputs.niri.overlays.niri
     ];
     # Configure your nixpkgs instance
     config = {
@@ -107,6 +108,10 @@
 
   programs.bash.enable = true;
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+  ];
+
   environment.systemPackages = [
     pkgs.upower
 
@@ -123,7 +128,37 @@
     pkgs.tmux
 
     pkgs.home-manager
+
+    pkgs.mako
+    pkgs.mesa
+    pkgs.xwayland-satellite
   ];
+
+  services.displayManager.lemurs = {
+    enable = true;
+    settings.environment_switcher.include_tty_shell = true;
+
+    settings.focus_behaviour = "username";
+    settings.username_field.remember = false;
+
+    settings.username_field.style.title = "username";
+    settings.username_field.style.title_color_focused = "cyan";
+    settings.username_field.style.content_color_focused = "white";
+    settings.username_field.style.show_border = true;
+    settings.username_field.style.border_color = "white";
+    settings.username_field.style.border_color_focused = "cyan";
+
+    settings.password_field.style.title = "password";
+    settings.password_field.content_replacement_character = "x";
+    settings.password_field.style.title_color_focused = "cyan";
+    settings.password_field.style.content_color_focused = "white";
+    settings.password_field.style.show_border = true;
+    settings.password_field.style.border_color = "white";
+    settings.password_field.style.border_color_focused = "cyan";
+  };
+  services.seatd.enable = true;
+  programs.niri.enable = true;
+
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   # services.openssh = {
