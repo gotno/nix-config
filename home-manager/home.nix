@@ -38,7 +38,11 @@
   home.homeDirectory = "/home/ont";
 
   programs.home-manager.enable = true;
+
+  programs.fuzzel.enable = true;
+
   programs.git.enable = true;
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -54,7 +58,12 @@
     ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dev/dots/nvim";
     ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dev/dots/.tmux.conf";
   };
-  # home.packages = with pkgs; [ steam ];
+
+  home.packages = with pkgs; [
+    alacritty
+    firefox
+    lazygit
+  ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.11";
