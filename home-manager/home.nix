@@ -50,6 +50,9 @@
       pkgs.vimPlugins.nvim-treesitter.withAllGrammars
     ];
   };
+  home.file = {
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dev/dots/nvim";
+    ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dev/dots/.tmux.conf";
   };
   # home.packages = with pkgs; [ steam ];
 
