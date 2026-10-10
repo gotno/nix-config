@@ -41,7 +41,13 @@
 
   programs.fuzzel.enable = true;
 
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    settings.user = {
+      name  = "will floyd";
+      email = "floyd.will@gmail.com";
+    };
+  };
 
   programs.neovim = {
     enable = true;
