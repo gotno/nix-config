@@ -66,6 +66,7 @@
   boot.loader.efi.canTouchEfiVariables = false;
   boot.kernel.sysctl = {
     "kernel.printk" = "3 4 1 7";
+    "net.core.rmem_max" = 8388608;
   };
   services.journald = {
     extraConfig = ''
