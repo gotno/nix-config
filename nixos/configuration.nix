@@ -93,6 +93,11 @@
     fallbackDns = ["1.1.1.1" "1.0.0.1"];
     dnsovertls = "true";
   };
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 80 443 ];
+    allowedUDPPorts = [ 7746 ];
+  };
 
   security.sudo.enable = true;
   users.users = {
