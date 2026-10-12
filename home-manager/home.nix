@@ -71,6 +71,20 @@
     lazygit
   ];
 
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "*" = {
+        addKeysToAgent = "yes";
+      };
+      "github.com" = {
+        hostName = "github.com";
+        identityFile = "~/.ssh/id_ed25519";
+      };
+    };
+  };
+  services.ssh-agent.enable = true;
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.11";
 }
